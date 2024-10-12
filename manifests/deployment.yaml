@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wf1
+  labels:
+    app: wf1
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1728691289028
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wf1
+  template:
+    metadata:
+      labels:
+        app: wf1
+    spec:
+      containers:
+        - name: wf1
+          image: acrworkflow1728691289028.azurecr.io/image-workflow-1728691289028:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
